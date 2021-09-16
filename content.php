@@ -60,6 +60,7 @@ get_method('home_api' , function()
 }, 'api');
 
 
+
  get_method('home', function()
 {
     require RP_INC_PATH.'home.php';
@@ -118,3 +119,4 @@ get_method('welcome' , function()
     <meta http-equiv="refresh" content="2;url=?rp=home">
     <?php
 });
+

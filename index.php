@@ -17,6 +17,9 @@ define('RP_STATIC_PATH',RP_ROOT.'/static/');
 define('PUBLIC_PATH' , dirname(__DIR__));
 define('XAPP_PATH', dirname(dirname(__DIR__)) .'/app/');
 
+require 'ryu-config.php';
+define('RYU_CONFIG',$ryu_config);
+
 function get_method($method,$callback,$key = null)
 {
     $key = ($key == null ) ? 'rp' : $key;
@@ -61,6 +64,12 @@ function get_config()
 
         return false;
     }
+}
+
+function ryu_config($main,$sub)
+{
+
+    return RYU_CONFIG[''.$main.''][''.$sub.''];
 }
 
 function save_config($data = [])
@@ -146,7 +155,31 @@ function getApp()
 
 if(empty($_SESSION['ryupanel_login']))
 {
+    if(!isset($_GET['validate_login'])){
     require RP_INC_PATH.'signin.php';
+    }else{
+         
+            $private_key = RYU_CONFIG['PRIVATE_KEY'];
+
+        if(isset($_POST['private_key']))
+        {
+            $key = $_POST['private_key'];
+
+            if($key == $private_key)
+            {
+                $_SESSION['ryupanel_login'] = sha1(session_id());
+
+                die('success');
+            }else{
+                die('wrong private key !');
+
+            }
+        }else{
+            die('wrong private key ! data error');
+        }
+        
+    }
+
 }else{
 
     if(empty($_GET['api'])){

