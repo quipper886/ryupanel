@@ -1,7 +1,7 @@
 <?php
 
 /** private key for login in ryupanel */
-$ryu_config['PRIVATE_KEY'] = 'PRIV8-RYUJINAPP';
+$ryu_config['PRIVATE_KEY'] = 'PRIV8-BANGSANZ';
 
 
 /** home statistic page  */
